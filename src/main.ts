@@ -1,4 +1,5 @@
 import { App, Modal, Notice, Plugin, PluginSettingTab, Setting } from 'obsidian';
+import JiraPlugin from './JiraPlugin';
 
 interface MyPluginSettings {
   mySetting: string;
@@ -8,7 +9,7 @@ const DEFAULT_SETTINGS: MyPluginSettings = {
   mySetting: 'default',
 };
 
-export default class MyPlugin extends Plugin {
+class MyPlugin extends Plugin {
   settings: MyPluginSettings = { mySetting: '' };
 
   async onload() {
@@ -25,9 +26,9 @@ export default class MyPlugin extends Plugin {
     this.addCommand({
       id: 'open-sample-modal',
       name: 'Open Sample Modal',
-      // callback: () => {
-      // 	console.log('Simple Callback');
-      // },
+      callback: () => {
+        console.log('Simple Callback');
+      },
       checkCallback: (checking: boolean) => {
         let leaf = this.app.workspace.activeLeaf;
         if (leaf) {
@@ -73,7 +74,7 @@ class SampleModal extends Modal {
 
   onOpen() {
     let { contentEl } = this;
-    contentEl.setText('Woah!');
+    contentEl.textContent = 'Woah!';
   }
 
   onClose() {
@@ -112,3 +113,5 @@ class SampleSettingTab extends PluginSettingTab {
       );
   }
 }
+
+export default JiraPlugin;
