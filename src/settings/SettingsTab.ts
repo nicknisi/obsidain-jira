@@ -60,5 +60,7 @@ export class SettingsTab extends PluginSettingTab {
     this.addTextSetting({ setting: 'apiUrl', title: 'Jira API URL' });
     this.addTextSetting({ setting: 'apiUsername', title: 'Jira API Username' });
     this.addTextSetting({ setting: 'apiSecret', title: 'Jira API Secret', type: 'password' });
+    this.addTextSetting({ setting: 'fileLocation', title: 'Note Location', description: 'Where new notes are stored' });
+    this.addTextSetting({ setting: 'template', title: 'Template', description: 'The template to use' });
   }
 }
